@@ -30,25 +30,25 @@ printf("\t format wejscia/wyjscia: %%lli\n");
 printf("\n");
 
 printf("float: \n");
-printf("\t wartosc minimalna: %i \n",FLT_MIN);
-printf("\t wartosc maksymalna: %i \n",FLT_MAX);
-printf("\t ziarno: %i \n",FLT_EPSILON);
+printf("\t wartosc minimalna: %f \n",FLT_MIN);
+printf("\t wartosc maksymalna: %f \n",FLT_MAX);
+printf("\t ziarno: %f \n",FLT_EPSILON);
 printf("\t precyzja: %i \n",FLT_DIG);
 printf("\t format wejscia/wyjscia: %%f lub %%e\n");
 printf("\n");
 
 printf("double: \n");
-printf("\t wartosc minimalna: %i \n",DBL_MIN);
-printf("\t wartosc maksymalna: %i \n",DBL_MAX);
-printf("\t ziarno: %i \n",DBL_EPSILON);
+printf("\t wartosc minimalna: %lf \n",DBL_MIN);
+printf("\t wartosc maksymalna: %lf \n",DBL_MAX);
+printf("\t ziarno: %lf \n",DBL_EPSILON);
 printf("\t precyzja: %i \n",DBL_DIG);
 printf("\t format wejscia/wyjscia: %%lf lub %%le\n");
 printf("\n");
 
 printf("long double: \n");
-printf("\t wartosc minimalna: %i \n",LDBL_MIN);
-printf("\t wartosc maksymalna: %i \n",LDBL_MAX);
-printf("\t ziarno: %i \n",LDBL_EPSILON);
+printf("\t wartosc minimalna: %Lf \n",LDBL_MIN);
+printf("\t wartosc maksymalna: %Lf \n",LDBL_MAX);
+printf("\t ziarno: %Lf \n",LDBL_EPSILON);
 printf("\t precyzja: %i \n",LDBL_DIG);
 printf("\t format wejscia/wyjscia: %%Lf lub %%Le\n");
 printf("\n");
