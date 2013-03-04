@@ -1,4 +1,5 @@
 #include <stdio.h>
+<<<<<<< HEAD
 void obraz(int k){
 	int tab[8];
 	int i;
@@ -32,4 +33,23 @@ int main(){
 	}
 
 	return 1;
+=======
+
+int main(){
+	char znak;
+	int a,b,c;
+	int tab[8];
+	int i = 0;
+	znak = getchar();
+	while(znak != EOF){
+		for(i=0;i<8;i++){
+			a = (znak & 1) ;
+			printf("%i",a);
+		}
+	znak = getchar();
+	i++;
+	}
+
+	return 0;
+>>>>>>> 9cf9f83fe017c53fb9849a7c35b650288a9614fb
 }
