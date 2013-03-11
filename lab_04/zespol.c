@@ -58,7 +58,7 @@ zespol  zesp_get (void) {
 	  if (ch == 'i') {
 	    do { ch = getchar(); } while (isspace(ch));
 	    if (ch == ')') {
-	      // if (znak == -1)  z.ima = -z.ima;
+	       if (znak == -1)  z.ima = -z.ima;
 	    } else blad("brak koncowego nawiasu");
 	  } else blad("brak 'i' na koncu czesci urojonej");
 	} else blad("niepoprawna czesc urojona");
@@ -73,7 +73,7 @@ void  zesp_print (zespol z) { // drukowanie liczby zespolonej
     printf("(%.2lf+%.2lfi)", z.rea, z.ima);
   }
   else {
-    printf("(%.2lf-%.2lfi)", z.rea, z.ima);
+    printf("(%.2lf-%.2lfi)", z.rea, -z.ima);
   }
 }
 
@@ -109,7 +109,7 @@ zespol  zesp_razy (zespol z1, zespol z2)
 
 zespol  zesp_sprzez (zespol z){
     z.rea = z.rea;
-    z.ima *= -1;
+    z.ima = z.ima * -1;
 
     return z;
 }
@@ -130,9 +130,32 @@ zespol euler(){
     return z;
 
 }
+zespol jedynka(){
+	zespol jed;
+ 
+	jed.rea = 1;
+	jed.ima = 0;
+	return jed;
+}
+
+double e(int x){
+	int i;
+	int pot;
+	int jot = 1;
+	double euler = 0;
+	for(i=1;i<=10;i++){
+		pot = pow(x,i);
+		jot *= i;
+		euler = pot / jot; 
+	}
+	return euler;
+}
+
+
 int main () {
     zespol  z1, z2;
-
+    zespol euler1 = euler();
+    zespol jedynka1 = jedynka();
     printf("\n z1 == "); z1 = zesp_get();
     printf(" z2 == "); z2 = zesp_get();
     printf("\n z1 + z2 == "); zesp_print(zesp_dodac(z1, z2));
@@ -143,10 +166,13 @@ int main () {
     printf("\n sprzezenie z2 == "); zesp_print(zesp_sprzez(z2));
     printf("\n\n\n\n");
     printf("Tozsamosc Eulera: \n");
-    zespol a;
-    a = euler();
-    zesp_print(a);
+   zesp_print(euler1);
+    printf(" + ");
+    zesp_print(jedynka1);
+    printf(" = ");
+    zesp_print(zesp_dodac(euler1, jedynka1)); 
     printf("\n");
-    //printf("%lf + 1 = %lf",a,a);
-    return 0;
+
+	printf("%le \n",e(5));
+	return 0;
 }
