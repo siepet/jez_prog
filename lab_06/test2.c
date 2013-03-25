@@ -7,6 +7,7 @@
 typedef struct sl {
   char slowo[MAX_DL_SLOWA];
   struct sl* dalej;
+  struct sl* wroc;
 }*  lista;
 
 //=======================================================
@@ -50,6 +51,7 @@ lista dolacz(char slow[MAX_DL_SLOWA], lista lis) {
 	lista pom = (lista)(malloc(sizeof(struct sl))); 
 	strcpy(pom->slowo,slow);  
 	pom->dalej = lis;
+	
 return pom;
 // dolacza  slowo  do poczatku listy  lis
 
