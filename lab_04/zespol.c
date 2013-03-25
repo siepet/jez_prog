@@ -70,10 +70,10 @@ zespol  zesp_get (void) {
 
 void  zesp_print (zespol z) { // drukowanie liczby zespolonej
   if (z.ima >= 0){
-    printf("(%.2lf+%.2lfi)", z.rea, z.ima);
+    printf("(%.50lf+%.50lfi)", z.rea, z.ima);
   }
   else {
-    printf("(%.2lf-%.2lfi)", z.rea, -z.ima);
+    printf("(%.50lf-%.50lfi)", z.rea, -z.ima);
   }
 }
 
@@ -122,7 +122,13 @@ double  zesp_abs (zespol z)
   // wartosc bezwzgledna liczby zespolonej
 
 /****************************************************************/
+zespol zesp_dziel(zespol z1, int dzielnik){
+	zespol wynik;
+	wynik.rea = z1.rea / dzielnik;
+	wynik.ima = z1.ima / dzielnik;
 
+	return wynik;
+}
 zespol euler(){
     zespol z;
     z.rea = cos(M_PI);
@@ -131,24 +137,26 @@ zespol euler(){
 
 }
 zespol jedynka(){
-	zespol jed;
- 
-	jed.rea = 1;
-	jed.ima = 0;
-	return jed;
+	zespol jeden;
+	jeden.rea = 1;
+	jeden.ima = 0;
+	return jeden;
 }
-
-double e(int x){
+zespol zero(){
+	zespol zero;
+	zero.rea = 0;
+	zero.ima = 0;
+	return zero;
+}
+zespol zesp_exp(zespol z){
+	zespol suma = zero();
+	zespol skl = jedynka();
 	int i;
-	int pot;
-	int jot = 1;
-	double euler = 0;
-	for(i=1;i<=10;i++){
-		pot = pow(x,i);
-		jot *= i;
-		euler = pot / jot; 
+	for(i=1;i<1000000;i++){
+		suma = zesp_dodac(suma,skl);
+		skl = zesp_dziel(zesp_razy(skl,z),i);
 	}
-	return euler;
+	return suma;
 }
 
 
@@ -156,6 +164,10 @@ int main () {
     zespol  z1, z2;
     zespol euler1 = euler();
     zespol jedynka1 = jedynka();
+
+	zespol pi_i = {0.0, M_PI};
+	zespol lewStr = zesp_dodac(zesp_exp(pi_i),jedynka1); 
+ 
     printf("\n z1 == "); z1 = zesp_get();
     printf(" z2 == "); z2 = zesp_get();
     printf("\n z1 + z2 == "); zesp_print(zesp_dodac(z1, z2));
@@ -166,13 +178,17 @@ int main () {
     printf("\n sprzezenie z2 == "); zesp_print(zesp_sprzez(z2));
     printf("\n\n\n\n");
     printf("Tozsamosc Eulera: \n");
-   zesp_print(euler1);
+    zesp_print(euler1);
     printf(" + ");
     zesp_print(jedynka1);
     printf(" = ");
     zesp_print(zesp_dodac(euler1, jedynka1)); 
     printf("\n");
+ 
+	zesp_print(zesp_exp(euler1));
+		printf("\n");
+	zesp_print(lewStr);
+    printf("\n");
 
-	printf("%le \n",e(5));
 	return 0;
 }
