@@ -62,7 +62,7 @@ int main() {
       case '6':
       		printf("Zapisuje slownik....\n");
 		zapisz_slownik();
-
+	break;
       default:
         printf("\n  BLAD! Podaj cyfre od 1 do 5 wlacznie\n");
       break;

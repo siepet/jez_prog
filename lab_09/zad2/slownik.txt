@@ -1,1 +1,3 @@
+przyjaciel 	friend 
 dobrze 	well 
+milosc 	love 
