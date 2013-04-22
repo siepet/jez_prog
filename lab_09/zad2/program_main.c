@@ -19,6 +19,7 @@ int main() {
     printf("\n    3 -- dodanie hasla");
     printf("\n    4 -- usuniecie hasla");
     printf("\n    5 -- koniec pracy");
+    printf("\n    6 -- zapisz slownik do pliku");
     printf("\n       -------");
     printf("\n       | ?  ");
     do {
@@ -54,8 +55,13 @@ int main() {
       break;
 
       case '5':
-        printf("\n  Dziekuje.\n\n"); koniec = PRAWDA;
+        printf("\n  Dziekuje.\n\n");
+		koniec = PRAWDA;
       break;
+
+      case '6':
+      		printf("Zapisuje slownik....\n");
+		zapisz_slownik();
 
       default:
         printf("\n  BLAD! Podaj cyfre od 1 do 5 wlacznie\n");

@@ -1,5 +1,6 @@
 #include "operacje_slownikowe.h"
 #include <string.h>
+#include <stdio.h>
 #define MAX_DL_SLOWA 100
 #define MAX_HASEL 1000
 
@@ -11,8 +12,37 @@ typedef struct haslo{
 haslo slownik[MAX_HASEL];
 int ile_hasel;
 
-void inicjuj_slownik(void){
-	ile_hasel = 0;
+int zapelnij_slownik(void){
+	FILE* slown;
+	int i = 0;	
+	int sukces;
+	slown = fopen("slownik.txt","r");
+	if(slown == NULL){
+		ile_hasel = 0;
+	} else {
+	do{
+		sukces = fscanf(slown,"%s",slownik[i].pol);
+		sukces = fscanf(slown,"%s",slownik[i].ang);
+	i++;
+	}while(sukces != EOF); 
+	ile_hasel = i - 1;
+	}
+	fclose(slown);
+	return ile_hasel;
+}
+void zapisz_slownik(void){
+	FILE* plik;
+	plik = fopen("slownik.txt","a+");
+	int i;
+	for(i=0;i<ile_hasel;i++){
+		fprintf(plik, "%s \t", slownik[i].pol);
+		fprintf(plik, "%s \n", slownik[i].ang);
+	}
+	fclose(plik);
+}
+void inicjuj_slownik(){
+	ile_hasel = zapelnij_slownik();
+	
 }
 
 
