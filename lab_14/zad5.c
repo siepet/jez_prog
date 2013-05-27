@@ -9,14 +9,13 @@ int main(){
     scanf("%i",&n);
     char wpr[MAX];
     char calosc[DLUGOSC];
-    char calosc1[DLUGOSC];
+    strcpy(calosc, "");
     for(i=0;i<n;i++){
         scanf("%s",wpr);
         strcpy(calosc+strlen(calosc),wpr);
         strcpy(calosc+strlen(calosc)," ");
     }
-    strcpy(calosc1,calosc);
-    printf("%s",calosc1);
+    printf("%s \n",calosc);
 
 
     return 0;
